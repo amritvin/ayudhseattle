@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AYUDH Seattle Benefit Concert</title>
-
+  
   <meta property="og:title" content="AYUDH Seattle Benefit Concert">
   <meta property="og:description" content="An unforgettable evening filled with Indian, Western, and Fusion music supporting charitable initiatives.">
   <meta property="og:image" content="poster.jpg">
@@ -17,17 +17,20 @@
 
   <style>
     /* =========================
-       AYUDH SEATTLE THEME
-       Direct Palette Match
+       AYUDH SEATTLE PALETTE
+       Strict Brand Guidelines
     ========================= */
     :root {
-      --poster-orange: #ba5231;
-      --poster-navy: #032c49;
-      --poster-gold: #e0b56a;
+      --orange: #ba5231;
+      --navy: #032c49;
+      --cream: #f7efe6;
+      --gold: #e0b56a;
+      --light: #fffaf5;
+      --text: #1f1f1f;
+      --muted: #556b7d;
       --white: #ffffff;
-      --text-dark: #1f1f1f;
-      --radius: 12px;
-      --shadow: 0 10px 30px rgba(0,0,0,0.15);
+      --shadow: 0 10px 30px rgba(3, 44, 73, 0.08);
+      --radius: 24px;
     }
 
     * {
@@ -41,8 +44,8 @@
     }
 
     body {
-      background-color: var(--poster-orange);
-      color: var(--text-dark);
+      background: var(--cream);
+      color: var(--text);
       font-family: 'Poppins', sans-serif;
       position: relative;
       overflow-x: hidden;
@@ -52,6 +55,11 @@
       text-decoration: none;
     }
 
+    img {
+      width: 100%;
+      display: block;
+    }
+
     .container {
       width: min(1100px, 90%);
       margin: auto;
@@ -59,7 +67,7 @@
       z-index: 2;
     }
 
-    /* LOW-OPACITY BACKGROUND LINE ART LAYER */
+    /* LOW-OPACITY BACKGROUND VECTOR ART LAYERS */
     .bg-lineart-container {
       position: absolute;
       top: 0;
@@ -73,31 +81,31 @@
 
     .lineart-skyline {
       position: absolute;
-      top: 280px;
+      top: 550px;
       left: 50%;
       transform: translateX(-50%);
       width: 120%;
       max-width: 1400px;
-      opacity: 0.04; /* Extra faint so text reads perfectly over it */
-      stroke: var(--poster-navy);
+      opacity: 0.05;
+      stroke: var(--navy);
     }
 
     .lineart-music-left {
       position: absolute;
-      top: 750px;
-      left: -50px;
-      width: 350px;
-      opacity: 0.05;
-      stroke: var(--white);
+      top: 1050px;
+      left: -40px;
+      width: 320px;
+      opacity: 0.04;
+      stroke: var(--orange);
     }
 
     .lineart-music-right {
       position: absolute;
-      top: 1100px;
-      right: -50px;
-      width: 400px;
+      top: 1550px;
+      right: -40px;
+      width: 380px;
       opacity: 0.04;
-      stroke: var(--poster-navy);
+      stroke: var(--navy);
     }
 
     /* NAVBAR */
@@ -105,7 +113,8 @@
       position: fixed;
       top: 0;
       width: 100%;
-      background: var(--poster-navy);
+      background: rgba(3, 44, 73, 0.95);
+      backdrop-filter: blur(10px);
       z-index: 1000;
       box-shadow: var(--shadow);
     }
@@ -114,276 +123,391 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.2rem 0;
+      padding: 1rem 0;
     }
 
     .logo {
       color: var(--white);
       font-weight: 800;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       letter-spacing: 0.5px;
     }
 
     .nav-btn {
-      background: var(--poster-orange);
-      color: var(--white);
-      padding: 0.6rem 1.5rem;
+      background: var(--gold);
+      color: var(--navy);
+      padding: .6rem 1.4rem;
       border-radius: 999px;
-      font-weight: 600;
-      transition: 0.2s ease;
+      font-weight: 700;
+      transition: .3s;
     }
 
     .nav-btn:hover {
-      background: #cf603d;
-      transform: translateY(-1px);
+      transform: translateY(-2px);
+      background: var(--white);
+      color: var(--navy);
     }
 
-    /* POSTER HEADER HERO */
+    /* HERO */
     .hero {
-      background: var(--poster-orange);
-      padding: 140px 0 60px;
+      min-height: 100vh;
+      background: linear-gradient(
+          rgba(3, 44, 73, 0.85),
+          rgba(3, 44, 73, 0.92)
+        ),
+        url("poster.jpg") center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
+      color: var(--white);
+      padding: 140px 20px 80px;
       position: relative;
     }
 
-    .poster-announcement {
-      color: var(--poster-navy);
-      font-weight: 700;
-      font-size: clamp(1.1rem, 3vw, 1.6rem);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 0.5rem;
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-content::before {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: rgba(186, 82, 49, 0.25);
+      filter: blur(100px);
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: -1;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: .6rem 1.2rem;
+      border-radius: 999px;
+      margin-bottom: 2rem;
+      font-size: .95rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
     }
 
     h1 {
-      font-size: clamp(2.5rem, 7vw, 5rem);
-      color: var(--poster-navy);
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      line-height: 1.05;
+      margin-bottom: 1.5rem;
       font-weight: 800;
-      line-height: 1.1;
       text-transform: uppercase;
-      margin-bottom: 0.2rem;
+      letter-spacing: -0.5px;
     }
 
-    .subtitle {
-      font-size: clamp(1.8rem, 4vw, 3rem);
-      color: var(--white);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 2.5rem;
+    .hero p {
+      max-width: 760px;
+      margin: auto;
+      font-size: 1.15rem;
+      line-height: 1.9;
+      color: #f5f5f5;
+      margin-bottom: 3rem;
     }
 
-    /* LIVE COUNTDOWN ELEMENTS */
-    .countdown-wrapper {
-      max-width: 650px;
-      margin: 0 auto 3rem;
-      background: var(--poster-navy);
-      padding: 1.5rem;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      position: relative;
-      z-index: 10;
-    }
-
-    .countdown-wrapper h3 {
-      color: var(--white);
-      margin-bottom: 1rem;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      opacity: 0.8;
-    }
-
+    /* TIMER */
     .timer {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 1rem;
+      max-width: 650px;
+      margin: 0 auto 3rem;
     }
 
     .time-box {
       background: rgba(255, 255, 255, 0.08);
-      padding: 1rem;
-      border-radius: 8px;
+      border-radius: 16px;
+      padding: 1.2rem;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     .time {
-      display: block;
-      color: var(--poster-gold);
+      color: var(--gold);
       font-size: clamp(1.8rem, 4vw, 2.8rem);
       font-weight: 700;
+      display: block;
       line-height: 1;
     }
 
     .label {
+      margin-top: .4rem;
       display: block;
-      color: var(--white);
+      color: #ddd;
       font-size: 0.8rem;
       text-transform: uppercase;
-      margin-top: 0.2rem;
-      opacity: 0.8;
+      letter-spacing: 0.5px;
     }
 
-    /* MIDDLE NAV-PATTERN STRIP */
-    .pattern-strip {
-      background: var(--poster-navy);
-      color: var(--poster-gold);
-      padding: 1rem 0;
+    /* BUTTONS */
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: .3s ease;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-primary {
+      background: var(--orange);
+      color: var(--white);
+      box-shadow: 0 8px 20px rgba(186, 82, 49, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      background: #cf603d;
+    }
+
+    .btn-secondary {
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .btn-secondary:hover {
+      background: var(--white);
+      color: var(--navy);
+      border-color: var(--white);
+      transform: translateY(-3px);
+    }
+
+    /* SECTION LAYOUTS */
+    section {
+      padding: 6rem 0;
+      position: relative;
+    }
+
+    .section-title {
       text-align: center;
-      font-size: 1.5rem;
-      letter-spacing: 6px;
-      position: relative;
-      z-index: 5;
+      margin-bottom: 4rem;
     }
 
-    /* CONTENT BODY SECTION */
-    .main-details {
-      background: var(--poster-orange);
-      padding: 5rem 0;
-      position: relative;
-    }
-
-    .split-layout {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-
-    .description-side h2 {
-      color: var(--poster-navy);
-      font-size: clamp(1.8rem, 4vw, 2.5rem);
+    .section-title h2 {
+      color: var(--navy);
+      font-size: 2.5rem;
       font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
       text-transform: uppercase;
     }
 
-    .description-side p {
-      font-size: 1.15rem;
+    .section-title p {
+      color: var(--muted);
+      max-width: 700px;
+      margin: auto;
       line-height: 1.8;
-      color: var(--white);
+      font-size: 1.05rem;
     }
 
-    .feature-cards {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
+    /* CARDS GRID */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
     }
 
     .card {
       background: var(--white);
-      padding: 1.5rem;
       border-radius: var(--radius);
+      padding: 2.5rem;
       box-shadow: var(--shadow);
-      border-left: 6px solid var(--poster-navy);
-      position: relative;
-      z-index: 5;
+      border-top: 6px solid var(--orange);
+      transition: 0.3s ease;
     }
 
-    .card h4 {
-      color: var(--poster-navy);
-      font-size: 1.2rem;
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 35px rgba(3, 44, 73, 0.12);
+    }
+
+    .card h3 {
       margin-bottom: 0.4rem;
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 1.3rem;
     }
 
-    .card p {
-      color: #555;
-      font-size: 0.95rem;
-      line-height: 1.5;
-    }
-
-    /* LOGISTICS LOWER STRIP */
-    .logistics-strip {
-      background: var(--poster-orange);
-      border-top: 4px dashed var(--poster-navy);
-      padding: 4rem 0;
-      position: relative;
-    }
-
-    .logistics-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2.5rem;
-    }
-
-    .log-box h3 {
-      color: var(--poster-navy);
-      font-size: 1.4rem;
-      font-weight: 800;
-      text-transform: uppercase;
+    .card .insta-handle {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--orange);
+      font-weight: 600;
       margin-bottom: 1rem;
     }
 
-    .log-box p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      color: var(--text-dark);
+    .card p {
+      line-height: 1.8;
+      color: var(--muted);
+      font-size: 0.95rem;
     }
 
-    .log-box .highlight {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--white);
-      display: block;
-      margin-top: 0.3rem;
+    /* EVENT DETAILS INFO BOX */
+    .event-info {
+      background: #fff7ef;
+      border-top: 1px solid rgba(186, 82, 49, 0.08);
+      border-bottom: 1px solid rgba(186, 82, 49, 0.08);
     }
 
-    .btn-register {
-      display: inline-block;
-      background: var(--poster-navy);
-      color: var(--poster-gold);
-      padding: 1rem 2.5rem;
-      border-radius: 8px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+    .info-box {
+      background: var(--white);
+      padding: 3.5rem;
+      border-radius: var(--radius);
       box-shadow: var(--shadow);
-      margin-top: 1rem;
-      transition: 0.2s ease;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2.5rem;
     }
 
-    .btn-register:hover {
-      background: #053e67;
+    .info-item {
+      line-height: 1.8;
+    }
+
+    .info-item p {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .info-item strong {
+      color: var(--navy);
+      font-size: 1.15rem;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    /* CTA SECTION */
+    .cta {
+      background: linear-gradient(135deg, #ba5231, #d1734f);
       color: var(--white);
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .cta p {
+      max-width: 700px;
+      margin: auto;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+      font-size: 1.1rem;
+      opacity: 0.95;
+    }
+
+    .cta .btn-primary {
+      background: var(--navy);
+      color: var(--gold);
+      box-shadow: 0 10px 25px rgba(3, 44, 73, 0.2);
+    }
+
+    .cta .btn-primary:hover {
+      background: var(--white);
+      color: var(--navy);
     }
 
     /* FOOTER */
     footer {
-      background: var(--poster-navy);
+      background: var(--navy);
       color: var(--white);
-      padding: 3rem 0;
+      padding: 4rem 0;
       text-align: center;
-      font-size: 0.9rem;
-      position: relative;
-      z-index: 10;
+    }
+
+    footer h3 {
+      margin-bottom: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    footer p {
+      opacity: .85;
+      line-height: 1.8;
+      max-width: 600px;
+      margin: auto;
     }
 
     .footer-links {
       display: flex;
       justify-content: center;
       gap: 1.5rem;
-      margin-bottom: 1.5rem;
       flex-wrap: wrap;
+      margin: 2rem 0;
     }
 
     .footer-links a {
-      color: var(--poster-gold);
-      font-weight: 500;
+      color: var(--gold);
+      font-weight: 600;
+      transition: 0.2s;
     }
 
     .footer-links a:hover {
+      color: var(--white);
       text-decoration: underline;
     }
 
-    /* RESPONSIVE DESIGN */
-    @media (max-width: 900px) {
-      .split-layout {
+    /* FLOATING BUTTON */
+    .floating-btn {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: var(--gold);
+      color: var(--navy);
+      padding: 1rem 1.6rem;
+      border-radius: 999px;
+      font-weight: 800;
+      box-shadow: 0 10px 25px rgba(3, 44, 73, 0.2);
+      z-index: 1000;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 0.85rem;
+      transition: 0.3s;
+    }
+
+    .floating-btn:hover {
+      transform: scale(1.05) translateY(-2px);
+      background: var(--white);
+      color: var(--navy);
+    }
+
+    /* MEDIA RESPONSIVE BREAKPOINTS */
+    @media(max-width:768px){
+      .hero {
+        padding-top: 140px;
+      }
+      .timer {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+      }
+      .section-title h2, .cta h2 {
+        font-size: 2.1rem;
+      }
+      .info-box {
+        padding: 2rem;
         grid-template-columns: 1fr;
-        gap: 3rem;
+        gap: 1.5rem;
       }
       .lineart-music-left, .lineart-music-right {
-        display: none; /* Hide complex background art on narrow mobile views to stay neat */
+        display: none;
       }
     }
   </style>
@@ -393,7 +517,7 @@
   <div class="bg-lineart-container">
     
     <svg class="lineart-skyline" viewBox="0 0 1200 200" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-width="2">
-      <path d="M0,180 L150,180 L150,130 L180,130 L180,180 L350,180 L380,150 L400,150 L420,180 L520,180 L520,100 L535,100 L535,70 L542,70 L542,20 L545,20 L545,70 L552,70 L552,95 L555,100 L555,105 L542,105 L538,125 L550,130 L550,180 L680,180 L700,140 L740,140 L760,180 L900,180 L920,110 L960,110 L980,180 L1200,180" stroke-dasharray="5 5"/>
+      <path d="M0,180 L150,180 L150,130 L180,130 L180,180 L350,180 L380,150 L400,150 L420,180 L520,180 L520,100 L535,100 L535,70 L542,70 L542,20 L545,20 L545,70 L552,70 L552,95 L555,100 L555,105 L542,105 L538,125 L550,130 L550,180 L680,180 L700,140 L740,140 L760,180 L900,180 L920,110 L960,110 L980,180 L1200,180" stroke-dasharray="6 6"/>
       <path d="M515,100 C515,90 572,90 572,100" />
     </svg>
 
@@ -406,12 +530,10 @@
       <circle cx="76" cy="35" r="4" fill="currentColor"/>
     </svg>
 
-    <svg class="lineart-music-right" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-width="1">
-      <circle cx="150" cy="100" r="80" stroke-dasharray="4 4" />
-      <circle cx="150" cy="100" r="60" />
-      <path d="M150,20 C140,40 160,40 150,20 Z M150,180 C140,160 160,160 150,180 Z M70,100 C90,90 90,110 70,100 Z M230,100 C210,90 210,110 230,100 Z" />
-      <path d="M150,100 A50,50 0 0,1 115,65 A50,50 0 0,1 150,100" />
-      <path d="M150,100 A50,50 0 0,1 185,65 A50,50 0 0,1 150,100" />
+    <svg class="lineart-music-right" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-width="1.2">
+      <circle cx="150" cy="100" r="75" stroke-dasharray="4 4" />
+      <circle cx="150" cy="100" r="55" />
+      <path d="M150,25 C142,42 158,42 150,25 Z M150,175 C142,158 158,158 150,175 Z M75,100 C92,92 92,108 75,100 Z M225,100 C208,92 208,108 225,100 Z" />
     </svg>
 
   </div>
@@ -424,102 +546,124 @@
   </nav>
 
   <section class="hero">
+    <div class="container hero-content">
+      <div class="badge">Saturday • May 30, 2026 • 7 PM</div>
+      
+      <div class="timer">
+        <div class="time-box">
+          <span class="time" id="days">0</span>
+          <span class="label">Days</span>
+        </div>
+        <div class="time-box">
+          <span class="time" id="hours">0</span>
+          <span class="label">Hours</span>
+        </div>
+        <div class="time-box">
+          <span class="time" id="minutes">0</span>
+          <span class="label">Minutes</span>
+        </div>
+        <div class="time-box">
+          <span class="time" id="seconds">0</span>
+          <span class="label">Seconds</span>
+        </div>
+      </div>
+
+      <h1>AYUDH Seattle<br>Benefit Concert</h1>
+      <p>Join us for an unforgettable evening filled with soulful melodies and vibrant rhythms that unite cultures.</p>
+      
+      <div class="hero-buttons">
+        <a href="https://forms.gle/dnPQHsWXRDZzxtxH6" target="_blank" class="btn btn-primary">Reserve Your Seat</a>
+        <a href="#details" class="btn btn-secondary">Event Details</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
     <div class="container">
-      <p class="poster-announcement">Join Us! Open to All ♥ May 30 2026</p>
-      <h1>AYUDH Seattle</h1>
-      <div class="subtitle">Benefit Concert</div>
-
-      <div class="countdown-wrapper">
-        <h3>Concert Countdown</h3>
-        <div class="timer">
-          <div class="time-box">
-            <span class="time" id="days">0</span>
-            <span class="label">Days</span>
-          </div>
-          <div class="time-box">
-            <span class="time" id="hours">0</span>
-            <span class="label">Hours</span>
-          </div>
-          <div class="time-box">
-            <span class="time" id="minutes">0</span>
-            <span class="label">Minutes</span>
-          </div>
-          <div class="time-box">
-            <span class="time" id="seconds">0</span>
-            <span class="label">Seconds</span>
-          </div>
-        </div>
+      <div class="section-title">
+        <h2>Concert Line-up</h2>
+        <p>Experience a heartfelt blend of Indian classical, contemporary, western, and fusion performances by passionate young artists from the community.</p>
       </div>
-    </div>
-  </section>
-
-  <div class="pattern-strip">
-    🪔 🪔 🪔 🪔 🪔 🪔 🪔 🪔 🪔
-  </div>
-
-  <section class="main-details">
-    <div class="container split-layout">
       
-      <div class="description-side">
-        <h2>Indian, Western,<br>and Fusion Music</h2>
-        <p>Join us for an unforgettable evening filled with soulful melodies and vibrant rhythms that unite cultures. This unique community-driven event features passionate local musicians showcasing a colorful spectrum of traditional composition layered alongside contemporary orchestration.</p>
+      <div class="grid" style="margin-bottom: 4rem;">
+        <div class="card">
+          <h3>🎵 Yuva Raga</h3>
+          <span class="insta-handle">@yuvaraga.uw</span>
+          <p>Classical Indian performance group bringing rich, traditional acoustic and vocal arrangements to the stage.</p>
+        </div>
+        <div class="card">
+          <h3>⚡ Unplugged</h3>
+          <span class="insta-handle">@uwunplugged</span>
+          <p>An innovative Indian/Western fusion band blending global instrumentation with contemporary execution.</p>
+        </div>
+        <div class="card">
+          <h3>🎻 AYUDH</h3>
+          <span class="insta-handle">@ayudhseattle</span>
+          <p>Presenting vibrant, expressive Indian folk melodies celebrating deep-rooted regional music traditions.</p>
+        </div>
       </div>
 
-      <div class="feature-cards">
-        <div class="card">
-          <h4>🎵 Diverse Lineup</h4>
-          <p>Classical vocal arrangements seamlessly transitioning into modern ensemble production tracks.</p>
-        </div>
-        <div class="card">
-          <h4>☕ Ethnic Food Court</h4>
-          <p>Warm classic masala chai, artisanal snacks, and delicious fresh items available throughout the venue.</p>
-        </div>
-        <div class="card">
-          <h4>❤️ Transparent Impact</h4>
-          <p>100% of generated concert proceeds goes directly into local charitable project execution and regional outreach initiatives.</p>
-        </div>
+      <div class="card" style="border-top-color: var(--navy); max-width: 600px; margin: 0 auto; text-align: center;">
+        <h3 style="font-size: 1.6rem; margin-bottom: 0.5rem;">☕ Snacks & Refreshments</h3>
+        <p style="font-size: 1.1rem; font-weight: 600; color: var(--orange); letter-spacing: 0.5px;">Samosa, Dhokla, and Chai!!</p>
+        <p style="margin-top: 0.5rem;">Delicious items available to enjoy during concert hours.</p>
       </div>
 
     </div>
   </section>
 
-  <section class="logistics-strip">
-    <div class="container logistics-grid">
-      
-      <div class="log-box">
-        <h3>Admission Options</h3>
-        <p>General Admission: <span class="highlight">$16</span></p>
-        <p>Student Pass: <span class="highlight">$10</span></p>
-        <p style="margin-top:0.5rem; font-size:0.95rem; opacity:0.8;">Venmo: @AYUDH_SEATTLE</p>
+  <section class="event-info" id="details">
+    <div class="container">
+      <div class="section-title">
+        <h2>Event Information</h2>
       </div>
-
-      <div class="log-box">
-        <h3>Location & Schedule</h3>
-        <p>11050 Greenwood Ave N,<br>Seattle, WA 98133</p>
-        <p class="highlight" style="font-size:1.1rem; margin-top:0.5rem;">Doors Open: 7:00 PM – 9:00 PM</p>
+      <div class="info-box">
+        <div class="info-item">
+          <strong>📍 Venue:</strong>
+          <p>11050 Greenwood Ave N,<br>Seattle, WA 98133</p>
+        </div>
+        <div class="info-item">
+          <strong>🗓️ Date & Time:</strong>
+          <p>Saturday, May 30, 2026<br>Doors Open: 6:30 PM<br>Program: 7:00 PM – 9:00 PM</p>
+        </div>
+        <div class="info-item">
+          <strong>🎟️ Tickets:</strong>
+          <p>General Admission – $16<br>Students – $10</p>
+        </div>
+        <div class="info-item">
+          <strong>❤️ Impact:</strong>
+          <p>100% of the proceeds will go to AYUDH Seattle service projects and charitable initiatives.</p>
+        </div>
       </div>
+    </div>
+  </section>
 
-      <div class="log-box" style="display: flex; align-items: center;">
-        <a href="https://forms.gle/dnPQHsWXRDZzxtxH6" target="_blank" class="btn-register">Register Now</a>
-      </div>
-
+  <section class="cta">
+    <div class="container">
+      <h2>Join Us For A Meaningful Evening</h2>
+      <p>Celebrate music, community, culture, and service while supporting charitable initiatives through an unforgettable concert experience.</p>
+      <a href="https://forms.gle/dnPQHsWXRDZzxtxH6" target="_blank" class="btn btn-primary">Register Now</a>
     </div>
   </section>
 
   <footer>
     <div class="container">
+      <h3>AYUDH Seattle Benefit Concert</h3>
+      <p>Bringing youth together through music, service, culture, and humanitarian initiatives.</p>
       <div class="footer-links">
         <a href="https://www.ayudh.org/seattle" target="_blank">AYUDH Seattle</a>
-        <a href="https://www.instagram.com/ayudh_seattle/" target="_blank">Instagram</a>
+        <a href="https://www.instagram.com/ayudh_seattle/" target="_blank">Instagram Seattle</a>
+        <a href="https://www.instagram.com/ayudhamericas" target="_blank">AYUDH Americas</a>
         <a href="https://www.ayudh.org/" target="_blank">AYUDH Global</a>
       </div>
-      <p>© 2026 AYUDH Seattle • All Rights Reserved</p>
+      <p style="opacity:.65;">© 2026 AYUDH Seattle • All Rights Reserved</p>
     </div>
   </footer>
 
+  <a href="https://forms.gle/dnPQHsWXRDZzxtxH6" target="_blank" class="floating-btn">Register</a>
+
   <script>
     const eventDate = new Date("May 30, 2026 19:00:00").getTime();
-
     const timer = setInterval(() => {
       const now = new Date().getTime();
       const distance = eventDate - now;
@@ -536,13 +680,12 @@
 
       if(distance < 0){
         clearInterval(timer);
-        const container = document.querySelector(".timer");
-        if(container) {
-          container.innerHTML = "<h2 style='color:#fff; width:100%; grid-column: span 4; font-size:1.5rem;'>🎶 The Concert Has Started! 🎶</h2>";
+        const timerContainer = document.querySelector(".timer");
+        if(timerContainer) {
+          timerContainer.innerHTML = "<h2 style='color: #fff; grid-column: span 4; font-size: 1.5rem; font-weight:700;'>The Concert Has Started 🎶</h2>";
         }
       }
     }, 1000);
   </script>
-
 </body>
 </html>
