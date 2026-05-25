@@ -17,20 +17,31 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
 
-    :root{
-      --bg:#f7efe6;
-      --primary:#c45a2d;
-      --secondary:#102d4a;
-      --accent:#f0b15f;
-      --white:#ffffff;
-      --text:#222;
-      --muted:#666;
-    }
+ /* =========================
+   AYUDH SEATTLE THEME
+   Inspired by poster palette
+========================= */
+
+:root{
+  --orange:#ba5231;
+  --navy:#032c49;
+
+  --cream:#f7efe6;
+  --gold:#e0b56a;
+  --light:#fffaf5;
+
+  --text:#1f1f1f;
+  --muted:#6d6d6d;
+
+  --shadow:0 10px 30px rgba(0,0,0,0.08);
+  --radius:24px;
+}
 
     *{
       margin:0;
@@ -42,12 +53,11 @@
       scroll-behavior:smooth;
     }
 
-    body{
-      font-family:'Poppins',sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      overflow-x:hidden;
-    }
+  body{
+  background:var(--cream);
+  color:var(--text);
+  font-family:'Poppins',sans-serif;
+}
 
     a{
       text-decoration:none;
@@ -65,14 +75,17 @@
 
     /* NAVBAR */
 
-    nav{
-      position:fixed;
-      width:100%;
-      top:0;
-      z-index:1000;
-      background:rgba(16,45,74,0.95);
-      backdrop-filter:blur(10px);
-    }
+  nav{
+  position:fixed;
+  top:0;
+  width:100%;
+
+  background:rgba(3,44,73,0.92);
+
+  backdrop-filter:blur(10px);
+
+  z-index:1000;
+}
 
     .nav-inner{
       display:flex;
@@ -104,22 +117,48 @@
     /* HERO */
 
     .hero{
-      min-height:100vh;
-      background:
-      linear-gradient(rgba(16,45,74,.78), rgba(16,45,74,.85)),
-      url("poster.jpg") center/cover no-repeat;
+  min-height:100vh;
 
-      display:flex;
-      align-items:center;
-      text-align:center;
-      color:white;
-      padding-top:100px;
-      padding-bottom:60px;
-    }
+  background:
+  linear-gradient(
+    rgba(3,44,73,0.82),
+    rgba(3,44,73,0.88)
+  ),
+  url("poster.jpg") center/cover no-repeat;
 
-    .hero-content{
-      width:100%;
-    }
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
+  color:white;
+
+  padding:120px 20px 80px;
+}
+
+   .hero-content{
+  position:relative;
+  z-index:2;
+}
+    .hero-content::before{
+  content:"";
+
+  position:absolute;
+
+  width:300px;
+  height:300px;
+
+  background:rgba(186,82,49,0.18);
+
+  filter:blur(100px);
+
+  top:-80px;
+  left:50%;
+
+  transform:translateX(-50%);
+
+  z-index:-1;
+}
 
     .badge{
       display:inline-block;
@@ -145,7 +184,11 @@
       line-height:1.9;
       color:#f5f5f5;
     }
+.countdown{
+  background:var(--navy);
 
+  color:white;
+}
     /* TIMER */
 
     .timer{
@@ -164,12 +207,13 @@
       backdrop-filter:blur(8px);
     }
 
-    .time{
-      display:block;
-      font-size:2.5rem;
-      font-weight:700;
-      color:var(--accent);
-    }
+.time{
+  color:var(--gold);
+
+  font-size:2.7rem;
+
+  font-weight:700;
+}
 
     .label{
       margin-top:.5rem;
@@ -194,19 +238,27 @@
       transition:.3s;
     }
 
-    .btn-primary{
-      background:var(--accent);
-      color:#111;
-    }
+   .btn-primary{
+  background:var(--orange);
+  color:white;
 
-    .btn-secondary{
-      border:1px solid rgba(255,255,255,0.4);
-      color:white;
-    }
+  box-shadow:
+  0 8px 20px rgba(186,82,49,0.3);
+}
 
-    .btn:hover{
-      transform:translateY(-3px);
-    }
+  .btn-secondary{
+  border:1px solid rgba(255,255,255,0.4);
+
+  color:white;
+
+  background:rgba(255,255,255,0.05);
+}
+
+   .btn-primary:hover{
+  transform:translateY(-3px);
+
+  background:#cf603d;
+}
 
     /* SECTION */
 
@@ -219,11 +271,13 @@
       margin-bottom:3rem;
     }
 
-    .section-title h2{
-      font-size:2.5rem;
-      color:var(--secondary);
-      margin-bottom:1rem;
-    }
+   .section-title h2{
+  color:var(--navy);
+
+  font-size:2.5rem;
+
+  margin-bottom:1rem;
+}
 
     .section-title p{
       color:var(--muted);
@@ -231,6 +285,9 @@
       margin:auto;
       line-height:1.8;
     }
+    .alt-section{
+  background:#fff7f1;
+}
 
     /* GRID */
 
@@ -240,17 +297,23 @@
       gap:2rem;
     }
 
-    .card{
-      background:white;
-      padding:2rem;
-      border-radius:24px;
-      box-shadow:0 10px 30px rgba(0,0,0,0.08);
-      transition:.3s;
-    }
+   .card{
+  background:white;
 
-    .card:hover{
-      transform:translateY(-6px);
-    }
+  border-radius:var(--radius);
+
+  padding:2rem;
+
+  box-shadow:var(--shadow);
+
+  border-top:5px solid var(--orange);
+
+  transition:0.3s ease;
+}
+
+  .card:hover{
+  transform:translateY(-6px);
+}
 
     .card h3{
       margin-bottom:1rem;
@@ -282,11 +345,16 @@
 
     /* CTA */
 
-    .cta{
-      background:linear-gradient(135deg,var(--primary),#d98545);
-      color:white;
-      text-align:center;
-    }
+.cta{
+  background:
+  linear-gradient(
+    135deg,
+    #ba5231,
+    #d1734f
+  );
+
+  color:white;
+}
 
     .cta h2{
       font-size:3rem;
