@@ -1,16 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>AYUDH Seattle Benefit Concert</title>
+
+  <!-- SEO / Social Preview -->
+  <meta property="og:title" content="AYUDH Seattle Benefit Concert">
+  <meta property="og:description" content="An unforgettable evening filled with Indian, Western, and Fusion music supporting charitable initiatives.">
+  <meta property="og:image" content="poster.jpg">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#102d4a">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
+
     :root{
       --bg:#f7efe6;
       --primary:#c45a2d;
@@ -52,7 +63,7 @@
       margin:auto;
     }
 
-    /* NAV */
+    /* NAVBAR */
 
     nav{
       position:fixed;
@@ -60,7 +71,7 @@
       top:0;
       z-index:1000;
       background:rgba(16,45,74,0.95);
-      backdrop-filter:blur(8px);
+      backdrop-filter:blur(10px);
     }
 
     .nav-inner{
@@ -95,13 +106,15 @@
     .hero{
       min-height:100vh;
       background:
-      linear-gradient(rgba(16,45,74,.75), rgba(16,45,74,.85)),
+      linear-gradient(rgba(16,45,74,.78), rgba(16,45,74,.85)),
       url("poster.jpg") center/cover no-repeat;
+
       display:flex;
       align-items:center;
       text-align:center;
       color:white;
-      padding-top:80px;
+      padding-top:100px;
+      padding-bottom:60px;
     }
 
     .hero-content{
@@ -110,31 +123,64 @@
 
     .badge{
       display:inline-block;
-      background:rgba(255,255,255,0.15);
+      background:rgba(255,255,255,0.12);
       border:1px solid rgba(255,255,255,0.2);
       padding:.6rem 1rem;
       border-radius:999px;
-      margin-bottom:1.5rem;
+      margin-bottom:2rem;
       font-size:.9rem;
     }
 
     h1{
-      font-size:clamp(2.4rem,7vw,5rem);
+      font-size:clamp(2.8rem,7vw,5rem);
       line-height:1.05;
-      margin-bottom:1rem;
+      margin-bottom:1.5rem;
       font-weight:700;
     }
 
     .hero p{
-      max-width:700px;
+      max-width:760px;
       margin:auto;
       font-size:1.1rem;
-      line-height:1.8;
-      color:#f3f3f3;
+      line-height:1.9;
+      color:#f5f5f5;
     }
 
+    /* TIMER */
+
+    .timer{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+      gap:1rem;
+      max-width:800px;
+      margin:auto;
+      margin-bottom:2.5rem;
+    }
+
+    .time-box{
+      background:rgba(255,255,255,0.08);
+      border-radius:20px;
+      padding:1.5rem;
+      backdrop-filter:blur(8px);
+    }
+
+    .time{
+      display:block;
+      font-size:2.5rem;
+      font-weight:700;
+      color:var(--accent);
+    }
+
+    .label{
+      margin-top:.5rem;
+      display:block;
+      color:#ddd;
+    }
+
+    /* BUTTONS */
+
     .hero-buttons{
-      margin-top:2rem;
+      margin-top:2.5rem;
       display:flex;
       justify-content:center;
       gap:1rem;
@@ -154,55 +200,12 @@
     }
 
     .btn-secondary{
-      border:1px solid rgba(255,255,255,0.5);
+      border:1px solid rgba(255,255,255,0.4);
       color:white;
     }
 
     .btn:hover{
       transform:translateY(-3px);
-    }
-
-    /* COUNTDOWN */
-
-    .countdown{
-      background:var(--secondary);
-      color:white;
-      padding:3rem 0;
-      text-align:center;
-    }
-
-    .countdown h2{
-      margin-bottom:2rem;
-      font-size:2rem;
-    }
-
-    .timer{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
-      gap:1rem;
-      max-width:700px;
-      margin:auto;
-    }
-
-    .time-box{
-      background:rgba(255,255,255,0.08);
-      border-radius:20px;
-      padding:1.5rem;
-    }
-
-    .time-box span{
-      display:block;
-    }
-
-    .time{
-      font-size:2.5rem;
-      font-weight:700;
-      color:var(--accent);
-    }
-
-    .label{
-      margin-top:.5rem;
-      color:#ddd;
     }
 
     /* SECTION */
@@ -255,7 +258,7 @@
     }
 
     .card p{
-      line-height:1.7;
+      line-height:1.8;
       color:var(--muted);
     }
 
@@ -273,7 +276,7 @@
     }
 
     .info-box p{
-      margin-bottom:1rem;
+      margin-bottom:1.5rem;
       line-height:1.8;
     }
 
@@ -302,12 +305,30 @@
     footer{
       background:var(--secondary);
       color:white;
-      padding:2rem 0;
+      padding:3rem 0;
       text-align:center;
     }
 
+    footer h3{
+      margin-bottom:1rem;
+    }
+
     footer p{
-      opacity:.8;
+      opacity:.85;
+      line-height:1.8;
+    }
+
+    .footer-links{
+      display:flex;
+      justify-content:center;
+      gap:1rem;
+      flex-wrap:wrap;
+      margin:1.8rem 0;
+    }
+
+    .footer-links a{
+      color:var(--accent);
+      font-weight:500;
     }
 
     /* FLOATING BUTTON */
@@ -321,55 +342,96 @@
       padding:1rem 1.3rem;
       border-radius:999px;
       font-weight:700;
-      box-shadow:0 10px 25px rgba(0,0,0,0.2);
+      box-shadow:0 10px 25px rgba(0,0,0,0.25);
       z-index:1000;
     }
 
     @media(max-width:768px){
 
       .hero{
-        padding:120px 0 80px;
+        padding-top:120px;
       }
 
       .hero p{
         font-size:1rem;
       }
 
+      .section-title h2{
+        font-size:2rem;
+      }
+
       .cta h2{
         font-size:2rem;
       }
 
-      .section-title h2{
-        font-size:2rem;
+      .timer{
+        grid-template-columns:repeat(2,1fr);
       }
+
     }
 
   </style>
+
 </head>
+
 <body>
 
-  <!-- NAV -->
+  <!-- NAVBAR -->
+
   <nav>
+
     <div class="container nav-inner">
-      <div class="logo">AYUDH SEATTLE</div>
+
+      <div class="logo">
+        AYUDH SEATTLE
+      </div>
 
       <a
-        class="nav-btn"
         href="https://forms.gle/dnPQHsWXRDZzxtxH6"
         target="_blank"
+        class="nav-btn"
       >
         Register
       </a>
+
     </div>
+
   </nav>
 
   <!-- HERO -->
+
   <section class="hero">
 
     <div class="container hero-content">
 
       <div class="badge">
         Saturday • May 30, 2026 • 7 PM
+      </div>
+
+      <!-- COUNTDOWN -->
+
+      <div class="timer">
+
+        <div class="time-box">
+          <span class="time" id="days">0</span>
+          <span class="label">Days</span>
+        </div>
+
+        <div class="time-box">
+          <span class="time" id="hours">0</span>
+          <span class="label">Hours</span>
+        </div>
+
+        <div class="time-box">
+          <span class="time" id="minutes">0</span>
+          <span class="label">Minutes</span>
+        </div>
+
+        <div class="time-box">
+          <span class="time" id="seconds">0</span>
+          <span class="label">Seconds</span>
+        </div>
+
       </div>
 
       <h1>
@@ -406,80 +468,59 @@
 
   </section>
 
-  <!-- COUNTDOWN -->
-  <section class="countdown">
-
-    <div class="container">
-
-      <h2>Countdown to the Concert 🎶</h2>
-
-      <div class="timer">
-
-        <div class="time-box">
-          <span class="time" id="days">0</span>
-          <span class="label">Days</span>
-        </div>
-
-        <div class="time-box">
-          <span class="time" id="hours">0</span>
-          <span class="label">Hours</span>
-        </div>
-
-        <div class="time-box">
-          <span class="time" id="minutes">0</span>
-          <span class="label">Minutes</span>
-        </div>
-
-        <div class="time-box">
-          <span class="time" id="seconds">0</span>
-          <span class="label">Seconds</span>
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
   <!-- EXPERIENCE -->
+
   <section>
 
     <div class="container">
 
       <div class="section-title">
-        <h2>An Inspiring Musical Evening</h2>
+
+        <h2>
+          An Inspiring Musical Evening
+        </h2>
 
         <p>
           Experience a heartfelt blend of Indian classical,
           contemporary, western, and fusion performances by
           passionate young artists from the community.
         </p>
+
       </div>
 
       <div class="grid">
 
         <div class="card">
+
           <h3>🎵 Live Performances</h3>
+
           <p>
             Soulful vocals, instrumental music, fusion rhythms,
             and energetic performances throughout the evening.
           </p>
+
         </div>
 
         <div class="card">
+
           <h3>☕ Food Court</h3>
+
           <p>
             Enjoy snacks, refreshments, chai, and delicious treats
             available for purchase during the concert.
           </p>
+
         </div>
 
         <div class="card">
+
           <h3>❤️ Support a Cause</h3>
+
           <p>
             All proceeds support AYUDH service projects,
             humanitarian initiatives, and charitable outreach.
           </p>
+
         </div>
 
       </div>
@@ -489,12 +530,17 @@
   </section>
 
   <!-- EVENT DETAILS -->
+
   <section class="event-info" id="details">
 
     <div class="container">
 
       <div class="section-title">
-        <h2>Event Information</h2>
+
+        <h2>
+          Event Information
+        </h2>
+
       </div>
 
       <div class="info-box">
@@ -529,11 +575,14 @@
   </section>
 
   <!-- CTA -->
+
   <section class="cta">
 
     <div class="container">
 
-      <h2>Join Us For A Meaningful Evening</h2>
+      <h2>
+        Join Us For A Meaningful Evening
+      </h2>
 
       <p>
         Celebrate music, community, culture, and service while
@@ -554,12 +603,54 @@
   </section>
 
   <!-- FOOTER -->
+
   <footer>
 
     <div class="container">
 
+      <h3>
+        AYUDH Seattle Benefit Concert
+      </h3>
+
       <p>
-        © 2026 AYUDH Seattle • Benefit Concert
+        Bringing youth together through music, service,
+        culture, and humanitarian initiatives.
+      </p>
+
+      <div class="footer-links">
+
+        <a
+          href="https://www.ayudh.org/seattle"
+          target="_blank"
+        >
+          AYUDH Seattle
+        </a>
+
+        <a
+          href="https://www.instagram.com/ayudh_seattle/"
+          target="_blank"
+        >
+          Instagram Seattle
+        </a>
+
+        <a
+          href="https://www.instagram.com/ayudhamericas"
+          target="_blank"
+        >
+          AYUDH Americas
+        </a>
+
+        <a
+          href="https://www.ayudh.org/"
+          target="_blank"
+        >
+          AYUDH Global
+        </a>
+
+      </div>
+
+      <p style="opacity:.65;">
+        © 2026 AYUDH Seattle • All Rights Reserved
       </p>
 
     </div>
@@ -567,6 +658,7 @@
   </footer>
 
   <!-- FLOATING REGISTER BUTTON -->
+
   <a
     href="https://forms.gle/dnPQHsWXRDZzxtxH6"
     target="_blank"
@@ -576,6 +668,7 @@
   </a>
 
   <!-- JS -->
+
   <script>
 
     // Countdown Timer
@@ -588,7 +681,9 @@
 
       const distance = eventDate - now;
 
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const days = Math.floor(
+        distance / (1000 * 60 * 60 * 24)
+      );
 
       const hours = Math.floor(
         (distance % (1000 * 60 * 60 * 24)) /
